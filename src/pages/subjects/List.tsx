@@ -51,6 +51,16 @@ const SubjectsList = () => {
             <Badge variant={"secondary"}>{getValue<string>()}</Badge>
           ),
         },
+        {
+          id: "description",
+          accessorKey: "description",
+          size: 300,
+          header: () => <p className="column-title">Description</p>,
+          cell: ({ getValue }) => (
+            <span className="line-clamp-2 truncate">{getValue<string>()}</span>
+          ),
+          filterFn: "includesString",
+        },
       ],
       [],
     ),
