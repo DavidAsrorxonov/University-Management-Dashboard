@@ -1,4 +1,5 @@
 import { CreateButton } from "@/components/refine-ui/buttons/create";
+import { DataTable } from "@/components/refine-ui/data-table/data-table";
 import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
 import { ListView } from "@/components/refine-ui/views/list-view";
 import { Input } from "@/components/ui/input";
@@ -10,12 +11,27 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { DEPARTMENT_OPTIONS } from "@/constants/departments";
+import { Subject } from "@/types/SubjectTypes";
+import { useTable } from "@refinedev/react-table";
 import { SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 
 const SubjectsList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("all");
+
+  const subjectTable = useTable<Subject>({
+    columns: [],
+    refineCoreProps: {
+      resource: "subjects",
+      pagination: {
+        pageSize: 10,
+        mode: "server",
+      },
+      filters: {},
+      sorters: {},
+    },
+  });
 
   return (
     <ListView>
@@ -61,6 +77,8 @@ const SubjectsList = () => {
           </div>
         </div>
       </div>
+
+      {/* <DataTable table={s} /> */}
     </ListView>
   );
 };
