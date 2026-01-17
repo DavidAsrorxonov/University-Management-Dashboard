@@ -1,3 +1,4 @@
+import { CreateButton } from "@/components/refine-ui/buttons/create";
 import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
 import { ListView } from "@/components/refine-ui/views/list-view";
 import { Input } from "@/components/ui/input";
@@ -55,6 +56,8 @@ const SubjectsList = () => {
                 ))}
               </SelectContent>
             </Select>
+
+            <CreateButton />
           </div>
         </div>
       </div>
