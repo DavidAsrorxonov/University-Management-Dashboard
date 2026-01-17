@@ -40,6 +40,7 @@ const SubjectsList = () => {
           cell: ({ getValue }) => (
             <span className="text-foreground">{getValue<string>()}</span>
           ),
+          filterFn: "includesString",
         },
       ],
       [],
