@@ -1,11 +1,19 @@
 import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
 import { ListView } from "@/components/refine-ui/views/list-view";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 
 const SubjectsList = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState("all");
 
   return (
     <ListView>
@@ -26,6 +34,21 @@ const SubjectsList = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+          </div>
+
+          <div className="flex gap-2 w-full sm:w-auto">
+            <Select
+              value={selectedDepartment}
+              onValueChange={setSelectedDepartment}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Filter by department" />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectItem value="all">All Departments</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </div>
