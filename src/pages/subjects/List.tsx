@@ -42,6 +42,15 @@ const SubjectsList = () => {
           ),
           filterFn: "includesString",
         },
+        {
+          id: "department",
+          accessorKey: "department",
+          size: 150,
+          header: () => <p className="column-title">Department</p>,
+          cell: ({ getValue }) => (
+            <Badge variant={"secondary"}>{getValue<string>()}</Badge>
+          ),
+        },
       ],
       [],
     ),
