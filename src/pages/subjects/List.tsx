@@ -88,7 +88,9 @@ const SubjectsList = () => {
       filters: {
         permanent: [...departmentFilters, ...subjectFilters],
       },
-      sorters: {},
+      sorters: {
+        initial: [{ field: "id", order: "desc" }],
+      },
     },
   });
 
