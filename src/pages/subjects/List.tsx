@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { DEPARTMENT_OPTIONS } from "@/constants/departments";
 import { SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 
@@ -47,6 +48,11 @@ const SubjectsList = () => {
 
               <SelectContent>
                 <SelectItem value="all">All Departments</SelectItem>
+                {DEPARTMENT_OPTIONS.map(({ label, value }, idx) => (
+                  <SelectItem key={idx} value={value}>
+                    {label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
