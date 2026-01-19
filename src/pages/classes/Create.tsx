@@ -72,6 +72,7 @@ const ClassesCreate = () => {
                   <Label>
                     Banner Image
                     <span className="text-orange-600">*</span>
+                    <p>Upload Image Widget</p>
                   </Label>
                 </div>
 
@@ -80,17 +81,21 @@ const ClassesCreate = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel>
+                        Class Name <span className="text-orange-600">*</span>
+                      </FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input
+                          placeholder="Introduction to Biology - Section A"
+                          {...field}
+                        />
                       </FormControl>
-                      <FormDescription>
-                        This is your public display name.
-                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
+                <div className="grid sm:grid-cols-2 gap-4"></div>
                 <Button type="submit">Submit</Button>
               </form>
             </Form>
