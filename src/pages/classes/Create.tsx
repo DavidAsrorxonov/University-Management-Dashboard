@@ -9,6 +9,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { classSchema } from "@/lib/schema";
 
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
 const ClassesCreate = () => {
   const back = useBack();
 
@@ -50,7 +62,39 @@ const ClassesCreate = () => {
 
           <Separator />
 
-          <CardContent className="mt-7">{/* <Form></Form> */}</CardContent>
+          <CardContent className="mt-7">
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-5"
+              >
+                <div className="space-y-3">
+                  <Label>
+                    Banner Image
+                    <span className="text-orange-600">*</span>
+                  </Label>
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="shadcn" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        This is your public display name.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit">Submit</Button>
+              </form>
+            </Form>
+          </CardContent>
         </Card>
       </div>
     </CreateView>
