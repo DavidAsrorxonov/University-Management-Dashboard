@@ -4,11 +4,30 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { useBack } from '@refinedev/core'
-import React from 'react'
-import { Form } from 'react-hook-form'
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { classSchema, facultySchema } from '@/lib/schema'
+
 
 const ClassesCreate = () => {
     const back = useBack()
+
+    const form = useForm<z.infer<typeof classSchema>>({
+        resolver: zodResolver(classSchema),
+        defaultValues: {
+            name: "",
+            description: "",
+            subjectId: 0,
+            teacherId: "",
+            capacity: 0,
+            status: "active",
+            bannerUrl: "",
+            bannerCldPubId: "",
+            inviteCode: "",
+            schedules: []
+        }
+    })
 
   return (
     <CreateView className='class-view'>
