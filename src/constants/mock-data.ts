@@ -32,3 +32,19 @@ export const mockSubjects: Subject[] = [
       "This course covers the basics of physics for engineers, including topics such as mechanics, thermodynamics, and electromagnetism.",
   },
 ];
+
+export type Teacher = {
+  id: number;
+  name: string;
+};
+
+export const teachers: Teacher[] = [
+  { id: 1, name: "Dr. Michael Brown" },
+  { id: 2, name: "Prof. Emily White" },
+];
+
+export const subjects = [
+  { id: 1, name: "Mathematics", code: "MATH" },
+  { id: 2, name: "Physics", code: "PHYS" },
+  { id: 3, name: "Chemistry", code: "CHEM" },
+];
