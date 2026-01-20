@@ -27,7 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { subjects } from "@/constants/mock-data";
+import { subjects, teachers } from "@/constants/mock-data";
 
 const ClassesCreate = () => {
   const back = useBack();
@@ -130,6 +130,41 @@ const ClassesCreate = () => {
                                 key={idx}
                               >
                                 {subject.name} ({subject.code})
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="teacherId"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Teacher <span className="text-orange-600">*</span>
+                        </FormLabel>
+                        <Select
+                          onValueChange={(value) =>
+                            field.onChange(Number(value))
+                          }
+                          value={field.value?.toString()}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder={"Select a teacher"} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {teachers.map((teacher, idx) => (
+                              <SelectItem
+                                value={teacher.id.toString()}
+                                key={idx}
+                              >
+                                {teacher.name}
                               </SelectItem>
                             ))}
                           </SelectContent>
