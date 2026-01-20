@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const ClassesCreate = () => {
   const back = useBack();
@@ -95,7 +96,32 @@ const ClassesCreate = () => {
                   )}
                 />
 
-                <div className="grid sm:grid-cols-2 gap-4"></div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="subjectId"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Subject <span className="text-orange-600">*</span>
+                        </FormLabel>
+                        <Select
+                          onValueChange={(value) =>
+                            field.onChange(Number(value))
+                          }
+                          value={field.value?.toString()}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder={"Select a subject"} />
+                            </SelectTrigger>
+                          </FormControl>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 <Button type="submit">Submit</Button>
               </form>
             </Form>
