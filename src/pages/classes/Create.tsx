@@ -28,6 +28,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { subjects, teachers } from "@/constants/mock-data";
+import { Textarea } from "@/components/ui/textarea";
 
 const ClassesCreate = () => {
   const back = useBack();
@@ -231,6 +232,27 @@ const ClassesCreate = () => {
                     )}
                   />
                 </div>
+
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Description <span className="text-orange-600">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Brief description about the class"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Separator />
                 <Button type="submit">Submit</Button>
               </form>
             </Form>
