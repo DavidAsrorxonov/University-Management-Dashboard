@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/select";
 import { subjects, teachers } from "@/constants/mock-data";
 import { Textarea } from "@/components/ui/textarea";
+import { Loader2 } from "lucide-react";
 
 const ClassesCreate = () => {
   const back = useBack();
@@ -149,9 +150,7 @@ const ClassesCreate = () => {
                           Teacher <span className="text-orange-600">*</span>
                         </FormLabel>
                         <Select
-                          onValueChange={(value) =>
-                            field.onChange(Number(value))
-                          }
+                          onValueChange={field.onChange}
                           value={field.value?.toString()}
                         >
                           <FormControl>
@@ -253,7 +252,16 @@ const ClassesCreate = () => {
                 />
 
                 <Separator />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" size={"lg"} className="w-full">
+                  {form.formState.isSubmitting ? (
+                    <div className="flex gap-1">
+                      <span>Creating Class...</span>
+                      <Loader2 className="inline-block ml-2 animate-spin" />
+                    </div>
+                  ) : (
+                    "Create Class"
+                  )}
+                </Button>
               </form>
             </Form>
           </CardContent>
